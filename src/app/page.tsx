@@ -1,5 +1,4 @@
 import { connect } from "@/lib/nats";
-import Image from "next/image";
 
 export default async function Home() {
   await connect();
