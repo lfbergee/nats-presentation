@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@nats-io/jetstream": "^3.0.0-32",
-    "@nats-io/kv": "^3.0.0-20",
-    "@nats-io/transport-node": "^3.0.0-24",
+    "@nats-io/kv": "^3.0.0-26",
+    "@nats-io/transport-node": "^3.0.0-30",
     "@tailwindcss/typography": "^0.5.15",
     "daisyui": "^4.12.14",
     "nats.ws": "^1.29.2",
