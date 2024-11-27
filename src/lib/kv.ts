@@ -3,6 +3,7 @@ import "server-only";
 import { KV, Kvm } from "@nats-io/kv";
 import { connect } from "./connect";
 import { NatsConnection } from "@nats-io/transport-node";
+import { connection } from "next/server";
 
 type KV_NAMES = "slides";
 
@@ -17,6 +18,7 @@ export async function getKVs<T extends KV_NAMES[]>(
     nc: NatsConnection;
   }
 > {
+  await connection();
   const nc = await connect();
   const kvm = new Kvm(nc);
 
