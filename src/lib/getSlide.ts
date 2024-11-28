@@ -1,9 +1,26 @@
 import { getKVs } from "./kv";
 
-export type SlideContent = {
+type Slide = {
   title?: string;
-  centerImage?: string;
+  notes?: string;
 };
+
+type ImageSlide = {
+  type: "image";
+  image: string;
+} & Slide;
+
+type TitleSlide = {
+  title: string;
+  type: "title";
+} & Slide;
+
+type TextSlide = {
+  type: "text";
+  bullets: string[];
+} & Slide;
+
+export type SlideContent = ImageSlide | TitleSlide | TextSlide;
 
 export async function getSlide(slug: string) {
   const kv = await getKVs(["slides"]);

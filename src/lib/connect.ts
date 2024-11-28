@@ -1,14 +1,15 @@
 import {
   connect as natsConnect,
-  credsAuthenticator,
+  usernamePasswordAuthenticator,
   NatsConnection,
 } from "@nats-io/transport-node";
 
 export async function connect(): Promise<NatsConnection> {
   return natsConnect({
-    servers: "connect.ngs.global",
-    authenticator: credsAuthenticator(
-      new TextEncoder().encode(process.env.NATS_CREDS),
+    servers: process.env.NATS_SERVER as string,
+    authenticator: usernamePasswordAuthenticator(
+      process.env.NATS_USER as string,
+      process.env.NATS_PASSWORD,
     ),
   });
 }

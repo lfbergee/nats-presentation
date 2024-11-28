@@ -12,10 +12,17 @@ export default async function Page({
 
   return (
     <div className="w-screen h-screen overflow-y-auto prose max-w-full p-8 relative">
-      <div className="border w-[50vw] h-[50vh] absolute top-2 left-2 overflow-scroll">
+      <div className="border w-[50vw] h-[calc(50vh-0.75rem)] absolute top-2 left-2 overflow-scroll">
         <Slide slide={slide} />
       </div>
-      <div className="border w-[25vw] h-[25vh] absolute bottom-2 left-2 overflow-scroll">
+      <div className="border w-[calc(50vw-1.5rem)] h-[65vh] absolute top-2 right-2 overflow-scroll p-4">
+        <h2 className="text-center mt-0">Notes</h2>
+        <p>{slide.notes}</p>
+      </div>
+      <div className="border w-[calc(50vw-1.5rem)] h-[calc(35vh-1.5rem)] absolute bottom-2 right-2 overflow-scroll p-4">
+        <h2 className="text-center mt-0">Chat</h2>
+      </div>
+      <div className="border w-[50vw] h-[calc(50vh-0.75rem)] absolute bottom-2 left-2 overflow-scroll opacity-60">
         <Slide slide={nextSlide} />
       </div>
       <Nav slug={slug} />

@@ -1,3 +1,5 @@
+"use server";
+
 import { SlideContent } from "./getSlide";
 import { getKVs } from "./kv";
 

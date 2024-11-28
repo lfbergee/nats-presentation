@@ -1,6 +1,6 @@
 "use client";
 
-import { connect, jwtAuthenticator } from "nats.ws";
+import { connect, usernamePasswordAuthenticator } from "nats.ws";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -11,10 +11,10 @@ export function AutoNav() {
   useEffect(() => {
     const wssSubscribe = async () => {
       const response = await fetch("/api/auth");
-      const token = await response.json();
+      const { token, user, server } = await response.json();
       const socket = await connect({
-        servers: "connect.ngs.global",
-        authenticator: jwtAuthenticator(token),
+        servers: `ws://${server}:8888`,
+        authenticator: usernamePasswordAuthenticator(user, token),
       });
 
       const sub = socket.subscribe("active.*");
