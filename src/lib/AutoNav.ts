@@ -13,7 +13,7 @@ export function AutoNav() {
       const response = await fetch("/api/auth");
       const { token, user, server } = await response.json();
       const socket = await connect({
-        servers: `ws://${server}:8888`,
+        servers: server,
         authenticator: usernamePasswordAuthenticator(user, token),
       });
 

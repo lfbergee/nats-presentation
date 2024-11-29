@@ -1,6 +1,8 @@
 export async function GET() {
   const token = process.env.NATS_PASSWORD;
   const user = process.env.NATS_USER;
-  const server = process.env.NATS_SERVER;
+  const serverRoot = process.env.NATS_SERVER;
+
+  const server = `${process.env.NODE_ENV === "development" ? "ws" : "wss"}://${serverRoot}:8888`;
   return Response.json({ token, user, server });
 }
