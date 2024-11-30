@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SlideContent } from "./getSlide";
+import { SlideContent } from "../actions/getSlide";
 
 export function Slide({ slide }: { slide: SlideContent | undefined }) {
   if (!slide) {

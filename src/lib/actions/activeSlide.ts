@@ -1,7 +1,7 @@
 "use server";
 
 import { jetstream } from "@nats-io/jetstream";
-import { connect } from "./connect";
+import { connect } from "../nats/connect";
 
 export async function activeSlide(slug: string) {
   const nc = await connect();

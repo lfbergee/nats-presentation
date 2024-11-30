@@ -1,7 +1,7 @@
-import { getSlide } from "@/lib/getSlide";
-import { AutoNav } from "@/lib/AutoNav";
-import { Slide } from "@/lib/Slide";
-import { Question } from "@/lib/Question";
+import { getSlide } from "@/lib/actions/getSlide";
+import { AutoNav } from "@/lib/components/AutoNav";
+import { Slide } from "@/lib/components/Slide";
+import { Question } from "@/lib/components/Question";
 
 export default async function Page({
   params,

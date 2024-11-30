@@ -1,6 +1,7 @@
-import { Nav } from "@/lib/Nav";
-import { getPresenterSlide } from "@/lib/getPresenterSlide";
-import { Slide } from "@/lib/Slide";
+import { Nav } from "@/lib/components/Nav";
+import { getPresenterSlide } from "@/lib/actions/getPresenterSlide";
+import { Slide } from "@/lib/components/Slide";
+import { Chat } from "@/lib/components/Chat";
 
 export default async function Page({
   params,
@@ -21,6 +22,7 @@ export default async function Page({
       </div>
       <div className="border w-[calc(50vw-1.5rem)] h-[calc(35vh-1.5rem)] absolute bottom-2 right-2 overflow-scroll p-4 rounded-xl">
         <h2 className="text-center mt-0">Chat</h2>
+        <Chat />
       </div>
       <div className="border w-[50vw] h-[calc(50vh-0.75rem)] absolute bottom-2 left-2 overflow-scroll opacity-60 rounded-xl">
         <Slide slide={nextSlide} />

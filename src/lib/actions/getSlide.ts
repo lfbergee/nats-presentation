@@ -1,4 +1,4 @@
-import { getKVs } from "./kv";
+import { getKVs } from "../nats/kv";
 
 type Slide = {
   title?: string;

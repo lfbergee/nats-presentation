@@ -1,6 +1,6 @@
 "use client";
 
-import { insertSlide } from "@/lib/insertSlide";
+import { insertSlide } from "@/lib/actions/insertSlide";
 import { useTransition } from "react";
 
 export default function Page({}) {

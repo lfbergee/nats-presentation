@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
-import { activeSlide } from "./activeSlide";
+import { activeSlide } from "../actions/activeSlide";
 
 export function Nav({ slug }: { slug: string }) {
   const [nextSlug, setNextSlug] = useState<number>();

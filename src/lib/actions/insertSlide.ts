@@ -1,7 +1,7 @@
 "use server";
 
 import { SlideContent } from "./getSlide";
-import { getKVs } from "./kv";
+import { getKVs } from "../nats/kv";
 
 export async function insertSlide(key: string, data: SlideContent) {
   const kv = await getKVs(["slides"]);
