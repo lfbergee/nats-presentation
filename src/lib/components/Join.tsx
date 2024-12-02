@@ -1,6 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
+import Image from "next/image";
 import { joinSlidedeck } from "../actions/joinSlidedeck";
 
 export function Join() {
@@ -21,8 +22,18 @@ export function Join() {
   }
 
   return (
-    <button onClick={handleClick} className="btn btn-primary">
-      Join presentation
+    <button
+      onClick={handleClick}
+      className="flex flex-col justify-center join join-vertical"
+    >
+      <Image
+        className="join-item"
+        src="/digirama.jpeg"
+        alt="digirama"
+        width={400}
+        height={400}
+      />
+      <div className="btn btn-accent btn-lg join-item">Join presentation</div>
     </button>
   );
 }
