@@ -8,9 +8,10 @@ export default function Page({}) {
 
   const handleClick = () => {
     startTransition(async () => {
-      await insertSlide("slide.20", {
-        type: "title",
-        title: "digirama.elate.no",
+      await insertSlide("slide.21", {
+        type: "interactive",
+        question: "Skal vi snakke mer om NATS?",
+        options: ["Ja", "Nei"],
         notes: ``,
       });
     });

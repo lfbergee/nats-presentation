@@ -3,10 +3,10 @@
 import { connect, usernamePasswordAuthenticator } from "nats.ws";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
-import { InteractiveSlide } from "../actions/getSlide";
+import { InteractiveSlide as InteractiveSlideType } from "../actions/getSlide";
 import { putInteractiveSlide } from "../actions/putInteractiveSlide";
 
-export function InteractiveSlide({ slide }: { slide: InteractiveSlide }) {
+export function InteractiveSlide({ slide }: { slide: InteractiveSlideType }) {
   const pathname = usePathname();
   const [responses, setResponses] = useState<string[]>([]);
 
@@ -51,23 +51,30 @@ export function InteractiveSlide({ slide }: { slide: InteractiveSlide }) {
       {slide?.question && (
         <h1 className="px-6 text-center my-6">{slide.question}</h1>
       )}
-      {slide?.options.map((option) => (
-        <button
-          disabled={hasClicked}
-          onClick={() => handleClick(option)}
-          type="button"
-          key={option}
-          className="btn btn-primary"
-        >
-          {option}
-        </button>
-      ))}
-
-      {slide.options.map((option) => (
-        <div key={option}>
-          {option} {responses.filter((response) => response === option).length}
+      <div className="m-auto flex flex-row gap-4">
+        {slide?.options.map((option) => (
+          <button
+            disabled={hasClicked || isPending}
+            onClick={() => handleClick(option)}
+            type="button"
+            key={option}
+            className="btn btn-primary"
+          >
+            {option}
+            {isPending && <span className="loading loading-spinner" />}
+          </button>
+        ))}
+      </div>
+      {responses.length > 0 && (
+        <div className="m-auto mt-8 flex flex-col gap-4">
+          {slide.options.map((option) => (
+            <div key={option}>
+              {option}{" "}
+              {responses.filter((response) => response === option).length}
+            </div>
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 }
