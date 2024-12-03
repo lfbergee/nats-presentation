@@ -17,7 +17,7 @@ export default {
   },
   plugins: [typograhpy, daisyui],
   daisyui: {
-    theme: true,
+    theme: ["dracula"],
     logs: false,
   },
 } satisfies Config;

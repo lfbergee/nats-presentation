@@ -8,6 +8,5 @@ export async function activeSlide(slug: string) {
 
   const js = jetstream(nc);
   await js.publish("active.slide", slug);
-
   await nc.close();
 }

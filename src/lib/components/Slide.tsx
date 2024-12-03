@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { SlideContent } from "../actions/getSlide";
+import { InteractiveSlide } from "./InteractiveSlide";
 
 export function Slide({ slide }: { slide: SlideContent | undefined }) {
   if (!slide) {
@@ -10,7 +11,11 @@ export function Slide({ slide }: { slide: SlideContent | undefined }) {
     );
   }
   if (slide.type === "title") {
-    return <h1 className="px-6 text-center my-6">{slide.title}</h1>;
+    return (
+      <div className="w-full h-full grid place-content-center ">
+        <h1 className="px-6 text-center my-6 text-accent">{slide.title}</h1>
+      </div>
+    );
   }
 
   if (slide.type === "image") {
@@ -36,7 +41,7 @@ export function Slide({ slide }: { slide: SlideContent | undefined }) {
         {slide?.title && (
           <h1 className="px-6 text-center my-6">{slide.title}</h1>
         )}
-        <ul className="px-6">
+        <ul className="px-6 list-none text-xl">
           {slide.bullets.map((bullet) => (
             <li key={bullet} className="my-4">
               {bullet}
@@ -45,6 +50,10 @@ export function Slide({ slide }: { slide: SlideContent | undefined }) {
         </ul>
       </>
     );
+  }
+
+  if (slide.type === "interactive") {
+    return <InteractiveSlide slide={slide} />;
   }
 
   return null;

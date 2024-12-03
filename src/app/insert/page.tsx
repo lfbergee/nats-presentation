@@ -8,20 +8,10 @@ export default function Page({}) {
 
   const handleClick = () => {
     startTransition(async () => {
-      await insertSlide("slide.18", {
-        type: "image",
-        image: "/procrast.jpg",
-        title: "",
-        notes: `Så går dette inn i boka
-        som nok et eksempel på at prokastinering
-        lønner seg. Det er kanskje ikke lærdommen
-        fortjener, men det er den dere får.
-
-        Men siden Petter er her i dag, som er
-        direktør for utvikling og dermed betaler
-        min regning, så må vi komme opp med noe
-        bedre antageligvis
-        `,
+      await insertSlide("slide.20", {
+        type: "title",
+        title: "digirama.elate.no",
+        notes: ``,
       });
     });
   };

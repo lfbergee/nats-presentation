@@ -20,7 +20,7 @@ export function Question() {
     <div className="fixed bottom-4 right-4">
       <div className="dropdown dropdown-top dropdown-left">
         <div tabIndex={0} role="button" className="btn m-1">
-          ??
+          Feedback
         </div>
         <div
           tabIndex={0}

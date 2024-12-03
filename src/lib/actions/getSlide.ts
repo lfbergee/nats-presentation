@@ -20,7 +20,17 @@ type TextSlide = {
   bullets: string[];
 } & Slide;
 
-export type SlideContent = ImageSlide | TitleSlide | TextSlide;
+export type InteractiveSlide = {
+  type: "interactive";
+  question: string;
+  options: string[];
+} & Slide;
+
+export type SlideContent =
+  | ImageSlide
+  | TitleSlide
+  | TextSlide
+  | InteractiveSlide;
 
 export async function getSlide(slug: string) {
   const kv = await getKVs(["slides"]);

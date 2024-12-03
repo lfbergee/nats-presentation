@@ -13,8 +13,6 @@ export async function joinSlidedeck() {
 
   const active = await jsm.streams.get("active");
 
-  console.log(await active.info());
-
   const msg = await active.getMessage({ last_by_subj: "active.slide" });
 
   const slide = (msg?.json() as number) ?? 1;
