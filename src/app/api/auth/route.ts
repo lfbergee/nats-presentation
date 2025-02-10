@@ -1,8 +1,8 @@
 export async function GET() {
-  const token = process.env.NATS_PASSWORD;
-  const user = process.env.NATS_USER;
+  const token = process.env.NATS_JWT;
+  const seed = process.env.NATS_NKEY;
   const serverRoot = process.env.NATS_SERVER;
 
-  const server = `wss://${serverRoot}:8888`;
-  return Response.json({ token, user, server });
+  const server = serverRoot?.replace("tls://", "wss://");
+  return Response.json({ token, seed, server });
 }

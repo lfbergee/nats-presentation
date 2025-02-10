@@ -1,15 +1,15 @@
 import {
   connect as natsConnect,
-  usernamePasswordAuthenticator,
+  credsAuthenticator,
   NatsConnection,
 } from "@nats-io/transport-node";
 
 export async function connect(): Promise<NatsConnection> {
   return natsConnect({
+    name: "server-side",
     servers: process.env.NATS_SERVER as string,
-    authenticator: usernamePasswordAuthenticator(
-      process.env.NATS_USER as string,
-      process.env.NATS_PASSWORD,
+    authenticator: credsAuthenticator(
+      new TextEncoder().encode(process.env.NATS_CREDS),
     ),
   });
 }

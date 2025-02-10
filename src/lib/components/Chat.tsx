@@ -1,6 +1,6 @@
 "use client";
 
-import { connect, usernamePasswordAuthenticator } from "nats.ws";
+import { connect, jwtAuthenticator } from "nats.ws";
 import { useEffect, useState } from "react";
 
 export function Chat() {
@@ -8,10 +8,11 @@ export function Chat() {
   useEffect(() => {
     const wssSubscribe = async () => {
       const response = await fetch("/api/auth");
-      const { token, user, server } = await response.json();
+      const { token, seed, server } = await response.json();
       const socket = await connect({
         servers: server,
-        authenticator: usernamePasswordAuthenticator(user, token),
+        authenticator: jwtAuthenticator(token, new TextEncoder().encode(seed)),
+        name: "chat",
       });
 
       const sub = socket.subscribe("question");

@@ -8,11 +8,11 @@ export default function Page({}) {
 
   const handleClick = () => {
     startTransition(async () => {
-      await insertSlide("slide.21", {
+      await insertSlide("slide.1", {
         type: "interactive",
         question: "Skal vi snakke mer om NATS?",
         options: ["Ja", "Nei"],
-        notes: ``,
+        notes: `Hello`,
       });
     });
   };
