@@ -1,36 +1,32 @@
 "use client";
 
-import { connect, jwtAuthenticator } from "nats.ws";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useNats } from "./useNats";
 
 export function AutoNav() {
   const [nextSlug, setNextSlug] = useState<number>();
   const router = useRouter();
 
+  const { connection } = useNats();
+
   useEffect(() => {
     const wssSubscribe = async () => {
-      const response = await fetch("/api/auth");
-      const { token, seed, server } = await response.json();
-      const socket = await connect({
-        servers: server,
-        authenticator: jwtAuthenticator(token, new TextEncoder().encode(seed)),
-        name: "navigation",
-      });
+      if (connection) {
+        const sub = connection.subscribe("active.*");
 
-      const sub = socket.subscribe("active.*");
-
-      (async (sub) => {
-        for await (const m of sub) {
-          const json = m.json() as number;
-          setNextSlug(json);
-        }
-      })(sub);
+        (async (sub) => {
+          for await (const m of sub) {
+            const json = m.json() as number;
+            setNextSlug(json);
+          }
+        })(sub);
+      }
     };
 
     wssSubscribe();
     return () => {};
-  }, []);
+  }, [connection]);
 
   useEffect(() => {
     if (nextSlug) {

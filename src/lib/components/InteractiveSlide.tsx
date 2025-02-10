@@ -1,38 +1,34 @@
 "use client";
 
-import { connect, jwtAuthenticator } from "nats.ws";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 import { InteractiveSlide as InteractiveSlideType } from "../actions/getSlide";
 import { putInteractiveSlide } from "../actions/putInteractiveSlide";
+import { useNats } from "./useNats";
 
 export function InteractiveSlide({ slide }: { slide: InteractiveSlideType }) {
   const pathname = usePathname();
   const [responses, setResponses] = useState<string[]>([]);
+  const { connection } = useNats();
 
   useEffect(() => {
     const wssSubscribe = async () => {
-      const response = await fetch("/api/auth");
-      const { token, seed, server } = await response.json();
-      const socket = await connect({
-        servers: server,
-        authenticator: jwtAuthenticator(token, new TextEncoder().encode(seed)),
-        name: "interactive",
-      });
-      const slug = pathname.split("/").pop();
-      const sub = socket.subscribe(`interactive.${slug}`);
+      if (connection) {
+        const slug = pathname.split("/").pop();
+        const sub = connection.subscribe(`interactive.${slug}`);
 
-      (async (sub) => {
-        for await (const m of sub) {
-          const string = m.string();
-          setResponses((responses) => [...responses, string]);
-        }
-      })(sub);
+        (async (sub) => {
+          for await (const m of sub) {
+            const string = m.string();
+            setResponses((responses) => [...responses, string]);
+          }
+        })(sub);
+      }
     };
 
     wssSubscribe();
     return () => {};
-  }, [pathname]);
+  }, [pathname, connection]);
 
   const [hasClicked, setHasClicked] = useState(false);
   const [isPending, startTransition] = useTransition();
