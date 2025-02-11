@@ -28,12 +28,14 @@ export function Join() {
     >
       <Image
         className="join-item"
-        src="/digirama.jpeg"
-        alt="digirama"
+        src="/nats-moose.webp"
+        alt="utviklingskonferansen"
         width={400}
         height={400}
       />
-      <div className="btn btn-accent btn-lg join-item">Join presentation</div>
+      <div className="btn btn-accent btn-lg join-item">
+        Åpne NATS presentasjon
+      </div>
     </button>
   );
 }
