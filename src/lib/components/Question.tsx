@@ -20,7 +20,7 @@ export function Question() {
     <div className="fixed bottom-4 right-4">
       <div className="dropdown dropdown-top dropdown-left">
         <div tabIndex={0} role="button" className="btn m-1">
-          Feedback
+          Spørsmål
         </div>
         <div
           tabIndex={0}
@@ -28,18 +28,18 @@ export function Question() {
         >
           <form action={postQuestion} className="p-4 flex flex-col">
             <label className="label flex flex-col items-start gap-1 w-full">
-              Name
+              Navn
               <input name="name" className="input input-bordered" />
             </label>
             <label className="label flex flex-col items-start gap-1 w-full">
-              Feedback
+              Spørsmål
               <textarea
                 name="question"
                 className="textarea textarea-bordered w-full"
               />
             </label>
             <button type="submit" className="btn btn-primary mt-4">
-              Submit
+              Send
             </button>
           </form>
         </div>
