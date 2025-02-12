@@ -7,17 +7,9 @@ export default {
     "./src/lib/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {
-    extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
-    },
-  },
   plugins: [typograhpy, daisyui],
   daisyui: {
-    theme: ["dracula"],
-    logs: false,
+    themes: ["dim"],
+    logs: true,
   },
 } satisfies Config;

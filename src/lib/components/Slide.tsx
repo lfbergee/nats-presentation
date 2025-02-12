@@ -27,7 +27,7 @@ export function Slide({ slide }: { slide: SlideContent | undefined }) {
         <Image
           width={1024}
           height={768}
-          className="m-auto rounded-lg overflow-hidden max-h-[90vh] object-contain"
+          className="mx-auto rounded-lg overflow-hidden max-h-[75vh] object-contain mt-0"
           src={slide.image}
           alt=""
         />

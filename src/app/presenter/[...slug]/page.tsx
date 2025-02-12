@@ -10,6 +10,8 @@ export default async function Page({
 }) {
   const slug = (await params).slug;
   const [slide, nextSlide] = await getPresenterSlide(slug);
+
+  console.log(slide.notes);
   return (
     <div className="w-screen h-screen overflow-y-auto prose max-w-full p-8 relative">
       <div className="border w-[25vw] h-[calc(50vh-0.75rem)] absolute top-2 left-2 overflow-scroll rounded-xl">
