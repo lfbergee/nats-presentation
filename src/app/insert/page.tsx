@@ -3,23 +3,14 @@
 import { insertSlide } from "@/lib/actions/insertSlide";
 import { useTransition } from "react";
 
-const slideNumber = 4;
-const title = "Hva syns du om å";
+const slideNumber = 23;
+const title = "Av og til er det dumme smart";
 const question = "jobbe med auth?";
-const type = "interactive";
+const type = "title";
 const notes = `
-  Vi er heller ikke spesielt glad i løsningen.
+  Jeg vet ikke om dette ble en bedre konklusjon.
 
-          Så å bytte den ut med noe annet er en god idé. Og vi har vært
-          pliktoppfyllende og grundige utviklere, så vi har holdt oss unna
-          monolitten og splitta opp alt i mange små mikrotjenester. Så hver
-          enkelt del er liten "self-contained", så hver del kan oppdateres
-          og oppgraders for seg selv.
 
-          Bortsett fra autentisering da. Den er distribuert over alle tjenestene,
-          fordelt over flere team. Som gjør at vi må støtte to autentiseringslønsninger
-          over en periode i alle tjenestene eller gjøre en big bang release på tvers
-          av systemene.
   `;
 
 export default function Page({}) {
@@ -29,8 +20,6 @@ export default function Page({}) {
     startTransition(async () => {
       await insertSlide(`slide.${slideNumber}`, {
         type,
-        question,
-        options: ["👍 Eneste jeg vil", "🫳 Hvis jeg må", "👎 Aldri"],
         title,
         notes,
       });

@@ -24,7 +24,7 @@ export function Join() {
   return (
     <button
       onClick={handleClick}
-      className="flex flex-col justify-center join join-vertical"
+      className="flex flex-col justify-center join join-vertical border border-primary"
     >
       <Image
         className="join-item"
@@ -33,8 +33,8 @@ export function Join() {
         width={400}
         height={400}
       />
-      <div className="btn btn-accent btn-lg join-item">
-        Åpne NATS presentasjon
+      <div className="btn btn-primary btn-outline border-none btn-lg join-item">
+        Åpne Utviklingskonferansen
       </div>
     </button>
   );
