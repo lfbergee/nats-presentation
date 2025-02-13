@@ -5,7 +5,6 @@ import { useTransition } from "react";
 
 const slideNumber = 23;
 const title = "Av og til er det dumme smart";
-const question = "jobbe med auth?";
 const type = "title";
 const notes = `
   Jeg vet ikke om dette ble en bedre konklusjon.
